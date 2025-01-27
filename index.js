@@ -96,10 +96,15 @@ app.get("/womens",(req, res)=>{
 
 
 // Task 5: Set up the route handler for /item/0 which sends back the first item in product.ejs
-app.get("/items/0",(req, res)=>{
-  res.render("category.ejs", inventory[0].items[0])
+app.get("/items/:anything",(req, res)=>{
+  const anyItem=req.params.anything
+  res.render("category.ejs", inventory[anyItem].items[anyItem])
 })
 
+app.get("/items/:anything",(req, res)=>{
+  const anyItem=req.params.anything
+  res.render("product.ejs", inventory[anyItem].items[anyItem])
+})
 
 // Task 6: Plug in the values in product.ejs to get the page working
 // Extra credit: modify the /item/0 route handler to have dynamic path parameter and return any item's data
